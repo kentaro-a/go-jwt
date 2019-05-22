@@ -27,6 +27,7 @@ type JwtPayload struct {
 // const JwtExpiredTime time.Duration = time.Minute * 60 * 24	// 1day
 const JwtExpiredTime time.Duration = time.Minute * 1
 const Alg string = "HS256"
+const SecretKey string = "xxxx"
 
 func Publish(data interface{}) (*Jwt, error) {
 	jwt := &Jwt{
@@ -102,6 +103,7 @@ func (jwt *Jwt) calcSignature() (string, error) {
 }
 
 func hash(s string) string {
+	s = s + SecretKey
 	b := sha256.Sum256([]byte(s))
 	return string(b[:])
 }

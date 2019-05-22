@@ -30,7 +30,7 @@ func AuthenticateMiddleware() echo.MiddlewareFunc {
 				}
 			}
 			// return echo.NewHTTPError(http.StatusUnauthorized)
-			return c.Redirect(http.StatusUnauthorized, "/login")
+			return c.Redirect(http.StatusMovedPermanently, "/login")
 		}
 	}
 }
